@@ -13,7 +13,7 @@ function App() {
   }
 
   return (
-    <div className=''>
+    <div className='container'>
       Work
       <button onClick={onClose}>Закрыть</button>
     </div>
@@ -21,3 +21,5 @@ function App() {
 }
 
 export default App
+
+ // "name": "telegram_bot",

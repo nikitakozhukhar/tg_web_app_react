@@ -8,3 +8,13 @@ body {
   background-color: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
 }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 100px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
