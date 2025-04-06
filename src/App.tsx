@@ -19,7 +19,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Router basename='https://nikitakozhukhar.github.io/tg_web_app_react/'> 
+      <Router basename='/'> 
         <Routes>
           <Route path='/form' element={<Form/>}/>
           <Route path='/productlist' element={<ProductList/>}/>
