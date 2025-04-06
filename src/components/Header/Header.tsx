@@ -1,24 +1,18 @@
 import './Header.css'
 import { useEffect } from 'react'
+import useTelergam from '../../hooks/useTelergam';
 // import IInitDataUnsave from '../../interface/IInitDataUnsave'
 import Button from '../Button/Button';
 
 const Header = () => {
-  const tg = window.Telegram.WebApp;
-  let userName;
 
-  const onClose = () => {
-    tg.close()
-  }
+  const { onClose, user } = useTelergam();
 
-  useEffect(() => {
-    userName = tg.initDataUnsafe?.user?.username
-  }, [])
 
   return (
     <div className='header'>
       <Button onClick={onClose}>Закрыть </Button>
-      <span>{userName}</span>
+      <span>{user}</span>
     </div>
   );
 };
