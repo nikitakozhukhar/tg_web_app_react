@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect } from 'react';
 import useTelergam from './hooks/useTelergam'
+import Header from './components/Header/Header';
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
   }, [])
 
   return (
-    <div className=''>
+    <div className='App'>
+      <Header />
       <button onClick={onToggleButton}>toggle</button>
     </div>
   )
