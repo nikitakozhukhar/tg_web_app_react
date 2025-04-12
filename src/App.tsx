@@ -20,8 +20,8 @@ function App() {
   return (
     <div className='App'>
       <Router> 
+        <Header />
         <Routes>
-          <Header />
           <Route path="/" element={<MainPage />} />
           <Route path='/form' element={<Form/>}/>
           <Route path='/productlist' element={<ProductList/>}/>
