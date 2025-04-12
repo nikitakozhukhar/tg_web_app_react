@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { SetStateAction, useCallback, useEffect, useState } from "react";
 import "./Form.css";
 import useTelergam from "../../hooks/useTelergam";
 
@@ -7,6 +7,25 @@ const Form = () => {
   const [street, setStreet] = useState("");
   const [subject, setSubject] = useState("physical");
   const {tg} = useTelergam();
+
+  const onSendData = useCallback(() => {
+    const data = {
+      country,
+      street,
+      subject
+    }
+    tg.sendData(JSON.stringify(data))
+  }, [country, street, subject])
+
+  useEffect(() => {
+   tg.onEvent('mainButtonClicked', onSendData)
+
+   return () => {
+    tg.offEvent('mainButtonClicked', onSendData)
+   }
+   
+   
+  }, [])
 
   useEffect(() => {
     tg.MainButton.setParams({
