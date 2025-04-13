@@ -3,19 +3,20 @@ import "./Form.css";
 import useTelergam from "../../hooks/useTelergam";
 
 const Form = () => {
-  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
   const [street, setStreet] = useState("");
   const [subject, setSubject] = useState("physical");
   const {tg} = useTelergam();
 
   const onSendData = useCallback(() => {
     const data = {
-      country,
+      city,
       street,
       subject
     }
+    console.log('data: ', data)
     tg.sendData(JSON.stringify(data))
-  }, [country, street, subject])
+  }, [city, street, subject])
 
   useEffect(() => {
    tg.onEvent('mainButtonClicked', onSendData)
@@ -23,8 +24,6 @@ const Form = () => {
    return () => {
     tg.offEvent('mainButtonClicked', onSendData)
    }
-   
-   
   }, [])
 
   useEffect(() => {
@@ -34,15 +33,16 @@ const Form = () => {
   }, [])
 
   useEffect(() => {
-    if (!country || !street) {
+    if (!city || !street) {
       tg.MainButton.hide()
     } else {
       tg.MainButton.show()
     }
-  }, [country, street])
+  }, [city, street])
 
-  const onChangeCountry = (e: { target: { value: SetStateAction<string>; }; }) => {
-    setCountry(e.target.value);
+  
+  const onChangeCity = (e: { target: { value: SetStateAction<string>; }; }) => {
+    setCity(e.target.value);
   };
 
   const onChangeStreet = (e: { target: { value: SetStateAction<string>; }; }) => {
@@ -59,9 +59,9 @@ const Form = () => {
       <input 
           className={"input"} 
           type="text" 
-          placeholder={"Страна"} 
-          value={country}
-          onChange={onChangeCountry}
+          placeholder={"Город"} 
+          value={city}
+          onChange={onChangeCity}
       />
 
       <input 
